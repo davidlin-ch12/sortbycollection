@@ -80,7 +80,7 @@ $(document).ready(function() {
   console.log(sortArray);
   rankArray.forEach(checkLoop);
 
-    var $wrapper = $(".sort-list-wrapper.w-dyn-list"),
+    var $wrapper = $(".sort-list.w-dyn-items"),
          $items = $wrapper.find(".sort-item.w-dyn-item");
      [].sort.call($items, function(a,b) {
          return +$(a).data('sortIndex') - +$(b).data('sortIndex');
