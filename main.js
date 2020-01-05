@@ -38,24 +38,22 @@ $(document).ready(function() {
   function addToData(item, index) {
     var rankString = "";
     var element = $(".sort-item.w-dyn-item").eq(index).data("sortIndex");
-    console.log(typeof element);
+
     if (typeof element === "string") {
       rankString = element + dataIndex;
       $(".sort-item.w-dyn-item").eq(index).data("sortIndex", rankString);
-      console.log(rankString);
+
     } else {
-      console.log("nope");
+
       $(".sort-item.w-dyn-item").eq(index).data("sortIndex", dataIndex.toString());
     }
-    console.log("dataIndex: " + $(".sort-item.w-dyn-item").eq(index).data("sortIndex") + " index: " + index + " value: " + item);
   }
-  //Need more sorting collections? Add the code beneath this comment over the comment and change the selector
+
   $(".sort-by-list.w-dyn-items").each(function() {
     var listLength = 0;
 
     $(this).find('.sort-by-item.w-dyn-item').each(function() {
       var name = slug($(this).find("p").text());
-      console.log("name: " + name);
       rankArray.push(name);
       listLength++;
     });
@@ -63,21 +61,16 @@ $(document).ready(function() {
     collectionsArray.push(listLength);
   });
 
-  console.log(collectionsArray);
-  console.log(rankArray);
-
   $(".sort-item.w-dyn-item .sort-tag-container").each(function(itemIndex) {
     var tagObject = {"index" : itemIndex};
 
     $(this).find(".sort-tag").each(function(index) {
       var ref = slug($(this).text());
-      console.log("ref: " + ref);
       tagObject["tagIndex" + index] = ref;
     });
     sortArray.push(tagObject);
   });
 
-  console.log(sortArray);
   rankArray.forEach(checkLoop);
 
     var $wrapper = $(".sort-list-wrapper.w-dyn-list"),
